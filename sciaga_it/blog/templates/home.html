@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Wszystkie ściągi</h1>
+
+
+<ul>
+{% for post in object_list %}
+
+    <li>
+        <a href="{% url 'post-details' post.pk %}">{{ post.title }}</a>  - {{ post.author }}<br/>
+
+        {{ post.body }}
+    </li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}
