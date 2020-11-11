@@ -8,12 +8,13 @@
 
 <h1>Dodaj nową ściągę</h1>
 
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button class="btn btn-info">Dodaj ściągę</button>
+<div class="form=control">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info">Dodaj ściągę</button>
 
-</form>
-
+    </form>
+</div>
 
 {% endblock %}
