@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Usuń ściągę
+{% endblock %}
+
+{% block content %}
+
+<h1>Usuń ściągę</h1>
+
+<div class="form=control">
+    <form method="POST">
+        {% csrf_token %}
+        <button class="btn btn-info">Usuń</button>
+
+    </form>
+</div>
+
+{% endblock %}
