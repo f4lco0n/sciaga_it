@@ -5,6 +5,7 @@ from .forms import PostForm, UpdatePostForm
 from django.urls import reverse_lazy
 # Create your views here.
 
+
 class HomeView(ListView):
     model = Post
     template_name = "home.html"
