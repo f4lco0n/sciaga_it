@@ -6,7 +6,10 @@
 
 {% block content %}
 <h1>{{ post.title }}</h1>
-<small>By: {{ post.author }}</small>
+<small>
+    By: {{ post.author }}
+    <a href="{% url 'update-post' post.pk %}">Edytuj</a></small>
+</small>
 <br/>
 {{ post.body  }}
 

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edytuj ściągę
+{% endblock %}
+
+{% block content %}
+
+<h1>Edytuj ściągę</h1>
+
+<div class="form=control">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info">Zapisz</button>
+
+    </form>
+</div>
+
+{% endblock %}

@@ -14,3 +14,22 @@ class PostForm(forms.ModelForm):
             'body': forms.Textarea(attrs={'class': 'form-control'}),
 
         }
+
+        labels = {
+            "title": "Tytuł ściągi",
+            "title_tag": "Tag ściągi",
+            "author": "Autor",
+            "body": "Zawartość"
+        }
+
+class UpdatePostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'title_tag', 'body')
+
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
+            'body': forms.Textarea(attrs={'class': 'form-control'}),
+
+        }
