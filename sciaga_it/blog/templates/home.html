@@ -10,6 +10,7 @@
     <li>
         <a href="{% url 'post-details' post.pk %}">{{ post.title }}</a>  - {{ post.author }}
         <small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small> <br/>
+        <small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small> <br/>
 
         {{ post.body }}
     </li>
