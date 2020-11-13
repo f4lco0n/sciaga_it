@@ -11,7 +11,7 @@
 
     <title>
         {% block title %}
-            Ściąga IT Version 1.0
+        Ściąga IT Version 1.0
         {% endblock %}
     </title>
 </head>
@@ -31,6 +31,12 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'add_post' %}">Dodaj ściągę </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Rejestracja </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Logowanie </a>
             </li>
 
         </ul>
