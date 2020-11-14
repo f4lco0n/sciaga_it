@@ -8,8 +8,10 @@
 <h1>{{ post.title }}</h1>
 <small>
     By: {{ post.author }} {{ post.publication_date }}
-    <a href="{% url 'update-post' post.pk %}">Edytuj</a>
-    <a href="{% url 'delete-post' post.pk %}">Usuń</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'update-post' post.pk %}">Edytuj</a>
+        <a href="{% url 'delete-post' post.pk %}">Usuń</a>
+    {% endif %}
 </small>
 <br/>
 {{ post.body  }}

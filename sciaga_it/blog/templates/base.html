@@ -26,18 +26,29 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+
             <li class="nav-item">
                 <a class="nav-link" href="#">Lista ściąg </a>
             </li>
+
+            {% if user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'add_post' %}">Dodaj ściągę </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Wyloguj </a>
+            </li>
+            {% else %}
+
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'register' %}">Rejestracja </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}">Logowanie </a>
             </li>
+            {% endif %}
+
 
         </ul>
 
