@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Kategorie</h1>
+
+
+
+{% for c in category_posts %}
+
+<a href="{% url 'post-details' c.pk %}">{{ c.title }}</a><br>
+
+{% endfor %}
+
+{% endblock %}

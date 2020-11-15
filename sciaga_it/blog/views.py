@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post
+from .models import Post, Category
 from .forms import PostForm, UpdatePostForm
 from django.urls import reverse_lazy
 # Create your views here.
@@ -31,3 +31,7 @@ class DeletePostView(DeleteView):
     model = Post
     template_name = "delete_post.html"
     success_url = reverse_lazy('home')
+
+def CategoryView(request, category_id):
+    category_posts = Post.objects.filter(category_id=category_id)
+    return render(request, 'categories.html',{'category_posts': category_posts})
