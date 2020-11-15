@@ -3,6 +3,8 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post, Category
 from .forms import PostForm, UpdatePostForm
 from django.urls import reverse_lazy
+
+
 # Create your views here.
 
 
@@ -11,9 +13,15 @@ class HomeView(ListView):
     template_name = "home.html"
 
 
+class PostListView(ListView):
+    model = Post
+    template_name = "post_list.html"
+
+
 class PostDetailView(DetailView):
     model = Post
     template_name = "post_details.html"
+
 
 class PostCreateView(CreateView):
     model = Post
@@ -21,17 +29,20 @@ class PostCreateView(CreateView):
     template_name = "add_post.html"
     # fields = '__all__'
 
+
 class UpdatePostView(UpdateView):
     model = Post
     form_class = UpdatePostForm
     template_name = "update_post.html"
     # fields = ('title', 'title_tag','body')
 
+
 class DeletePostView(DeleteView):
     model = Post
     template_name = "delete_post.html"
     success_url = reverse_lazy('home')
 
+
 def CategoryView(request, category_id):
     category_posts = Post.objects.filter(category_id=category_id)
-    return render(request, 'categories.html',{'category_posts': category_posts})
+    return render(request, 'categories.html', {'category_posts': category_posts})

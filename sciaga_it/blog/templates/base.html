@@ -28,7 +28,7 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Lista ściąg </a>
+                <a class="nav-link" href="{% url 'post_list' %}">Lista ściąg </a>
             </li>
 
             {% if user.is_authenticated %}
