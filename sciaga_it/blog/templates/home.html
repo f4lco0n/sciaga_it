@@ -9,7 +9,7 @@
 
     <li>
         <a href="{% url 'post-details' post.pk %}">{{ post.title }}</a>  - {{ post.author }} {{ post.publication_date }}
-
+        w kategorii: {{ post.category }}
         <br>
 
         {% if user.is_authenticated %}
