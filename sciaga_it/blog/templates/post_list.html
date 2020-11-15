@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Wszystkie ściągi</h1>
+
+
+<ul>
+{% for post in object_list %}
+
+    <li>
+        <a href="{% url 'post-details' post.pk %}">{{ post.title }}</a>  - {{ post.author }} {{ post.publication_date }}
+        w kategorii: <a href="{% url 'category' post.category_id %}">{{ post.category }}</a>
+        <br>
+
+        {% if user.is_authenticated %}
+            <small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small>
+            <small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small> <br/>
+        {% endif %}
+
+        {{ post.body|slice:":200"|safe }}
+    </li>
+
+{% endfor %}
+
+</ul>
+
+{% endblock %}
