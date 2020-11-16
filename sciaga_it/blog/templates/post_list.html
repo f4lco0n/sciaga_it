@@ -1,26 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Wszystkie ściągi</h1>
+<center><h1 class="post-list-title">Wszystkie ściągi</h1></center>
 
 
-<ul>
-{% for post in object_list %}
+<ul class="post-list">
+    {% for post in object_list %}
 
     <li>
-        <a href="{% url 'post-details' post.pk %}">{{ post.title }}</a>  - {{ post.author }} {{ post.publication_date }}
-        w kategorii: <a href="{% url 'category' post.category_id %}">{{ post.category }}</a>
-        <br>
+        <div class="post-preview-card">
+            <div class="post-details">
+                <section class="post-info-section">
+                    <h4><a href="{% url 'post-details' post.pk %}">{{ post.title }}</a></h4>
+                    {{ post.publication_date }} | kategoria: <a href="{% url 'category' post.category_id %}">
+                    {{ post.category }}</a>
+                    | autor: {{ post.author }}
+                </section>
 
-        {% if user.is_authenticated %}
-            <small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small>
-            <small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small> <br/>
-        {% endif %}
+                {% if user.is_authenticated %}
+                <section class="post-action-menu-section">
+                    <ul class="post-action-menu">
+                        <li><small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small></li>
+                        <li><small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small></li>
+                    </ul>
 
-        {{ post.body|slice:":200"|safe }}
+                </section>
+                {% endif %}
+            </div>
+
+            <br>
+            <div class="post-content">
+                {{ post.body|slice:":200"|safe }}
+            </div>
+        </div>
     </li>
+    <br>
 
-{% endfor %}
+    {% endfor %}
 
 </ul>
 
