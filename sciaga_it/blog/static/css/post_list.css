@@ -1,0 +1,39 @@
+h1.post-list-title{
+    padding-bottom: 2%;
+}
+
+div.post-details {
+    display: flex;
+}
+
+ul.post-list {
+    list-style-type: none;
+}
+
+ul.post-list li {
+    border-bottom: 1px solid #ccc;
+    width: 80%;
+    margin: auto;
+}
+
+section.post-action-menu-section {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+ul.post-action-menu {
+    list-style-type: none;
+}
+
+ul.post-action-menu li {
+    border-bottom: 1px solid #ccc;
+    width: fit-content;
+}
+
+ul.post-action-menu li:last-child {
+    border-bottom: 0;
+}
+
+div.post-content{
+
+}
