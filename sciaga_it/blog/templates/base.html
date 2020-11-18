@@ -53,7 +53,9 @@
 
 
         </ul>
-
+        {% if user.is_authenticated %}
+            <font color="white">Jestes zalogowany jako: {{ user.username }}</font>
+        {% endif %}
     </div>
 </nav>
 
