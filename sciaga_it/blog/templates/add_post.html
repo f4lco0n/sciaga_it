@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Utwórz nową sciągę
+Utwórz nową sciągę
 {% endblock %}
 
 {% block content %}
@@ -11,7 +11,9 @@
 <div class="form=control">
     <form method="POST">
         {% csrf_token %}
+        {{ form.media }}
         {{ form.as_p }}
+
         <button class="btn btn-info">Dodaj ściągę</button>
 
     </form>
@@ -21,6 +23,7 @@
 
     var author_name = "{{ user.id }}";
     document.getElementById("author_input").value = author_name;
+
 </script>
 
 

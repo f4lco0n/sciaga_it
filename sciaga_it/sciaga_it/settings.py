@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'account'
+    'account',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +125,27 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+#CKEDITOR CONFIG
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = 'media/'
+
+CKEDITOR_CONFIGS = {
+    'default':
+        {'toolbar': 'Custom',
+         'toolbar_Custom': [
+             ['Bold', 'Link', 'Unlink', 'Image'],
+         ],
+         },
+    'special':
+        {'toolbar': 'Special', 'height': 500,
+         'toolbar_Special':
+             [
+                 ['Link','Bold','CodeSnippet'],
+                 # [''], # here
+             ], 'extraPlugins': 'codesnippet', # here
+         }
+}
+
