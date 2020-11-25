@@ -16,6 +16,12 @@ class HomeView(ListView):
 class PostListView(ListView):
     model = Post
     template_name = "post_list.html"
+    ordering = ['-publication_date']
+
+    def get(self, request, *args, **kwargs):
+        result = Post.objects.filter(is_private=0)
+        return render(request,self.template_name,{'result':result})
+
 
 
 class PostDetailView(DetailView):
