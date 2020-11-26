@@ -34,6 +34,6 @@ ul.post-action-menu li:last-child {
     border-bottom: 0;
 }
 
-div.post-content{
-
+.django-ckeditor-widget{
+  width: 50%;
 }

@@ -12,6 +12,9 @@ class HomeView(ListView):
     model = Post
     template_name = "home.html"
 
+    def get(self, request, *args, **kwargs):
+        result = Post.objects.filter(is_private=0).count()
+        return render(request, self.template_name, {'result': result})
 
 class PostListView(ListView):
     model = Post
@@ -40,7 +43,6 @@ class UpdatePostView(UpdateView):
     model = Post
     form_class = UpdatePostForm
     template_name = "update_post.html"
-    # fields = ('title', 'title_tag','body')
 
 
 class DeletePostView(DeleteView):
@@ -49,6 +51,6 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('home')
 
 
-def CategoryView(request, category_id):
-    category_posts = Post.objects.filter(category_id=category_id)
+def category_view(request, category_id):
+    category_posts = Post.objects.filter(category_id=category_id, is_private=0)
     return render(request, 'categories.html', {'category_posts': category_posts})

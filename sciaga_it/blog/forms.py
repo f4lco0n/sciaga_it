@@ -6,7 +6,8 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         bool_choices = ((True, 'Tak'), (False, 'Nie'))
-        fields = ('title', 'title_tag','category', 'author','is_private', 'body')
+        fields = ('title', 'title_tag','category',
+                  'author','is_private','short_description', 'body')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
@@ -15,6 +16,7 @@ class PostForm(forms.ModelForm):
             'author': forms.TextInput(attrs={'class': 'form-control','value':'',
                                              'id': 'author_input','type': 'hidden'}),
             'is_private': forms.Select(choices=bool_choices, attrs={'class': 'form-control'}),
+            'short_description': forms.Textarea(attrs={'class': 'form-control'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
 
         }
@@ -25,6 +27,7 @@ class PostForm(forms.ModelForm):
             "category": "Kategoria",
             "author": "Autor",
             "is_private": "Post prywatny",
+            "short_description": "Opis krótki",
             "body": "Zawartość"
         }
 
@@ -32,13 +35,16 @@ class UpdatePostForm(forms.ModelForm):
     class Meta:
         model = Post
         bool_choices = ((True, 'Tak'), (False, 'Nie'))
-        fields = ('title', 'title_tag','category','is_private','body')
+        fields = ('title', 'title_tag','category',
+                  'is_private','short_description','body')
 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'category': forms.Select(attrs={'class': 'form-control'}),
             'is_private': forms.Select(choices=bool_choices, attrs={'class': 'form-control'}),
+            'short_description': forms.Textarea(attrs={'class': 'form-control',
+                                                       'placeholder': 'Kliknij link powyżej aby zobaczyć post'}),
             'body': forms.Textarea(attrs={'class': 'form-control'}),
         }
 
@@ -47,5 +53,6 @@ class UpdatePostForm(forms.ModelForm):
             "title_tag": "Tag ściągi",
             "category": "Kategoria",
             "is_private": "Post prywatny",
+            "short_description": "Opis krótki",
             "body": "Zawartość"
         }

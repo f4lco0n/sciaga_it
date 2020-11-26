@@ -19,6 +19,8 @@ class Post(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default='')
     title_tag = models.CharField(max_length=255)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    short_description = models.CharField(max_length=255,
+                                         default='Kliknij link powyżej aby zobaczyć post')
     body = RichTextUploadingField(blank=True, config_name='special')
     is_private = models.BooleanField(default=False)
     publication_date = models.DateField(auto_now_add=True)
