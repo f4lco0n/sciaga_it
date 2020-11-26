@@ -54,3 +54,7 @@ class DeletePostView(DeleteView):
 def category_view(request, category_id):
     category_posts = Post.objects.filter(category_id=category_id, is_private=0)
     return render(request, 'categories.html', {'category_posts': category_posts})
+
+def show_user_post_view(request, pk):
+    result = Post.objects.filter(author_id=pk, is_private=0)
+    return render(request,'user_posts.html',{'result':result})
