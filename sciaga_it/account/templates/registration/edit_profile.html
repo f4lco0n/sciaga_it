@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Edycja profilu
+{% endblock %}
+
+{% block content %}
+
+<h1>Edytuj profil</h1>
+
+<div class="form=control">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-info">Edytuj</button>
+
+    </form>
+</div>
+
+{% endblock %}
