@@ -16,6 +16,7 @@ class HomeView(ListView):
         result = Post.objects.filter(is_private=0).count()
         return render(request, self.template_name, {'result': result})
 
+
 class PostListView(ListView):
     model = Post
     template_name = "post_list.html"
@@ -23,8 +24,7 @@ class PostListView(ListView):
 
     def get(self, request, *args, **kwargs):
         result = Post.objects.filter(is_private=0)
-        return render(request,self.template_name,{'result':result})
-
+        return render(request, self.template_name, {'result': result})
 
 
 class PostDetailView(DetailView):
@@ -53,8 +53,9 @@ class DeletePostView(DeleteView):
 
 def category_view(request, category_id):
     category_posts = Post.objects.filter(category_id=category_id, is_private=0)
-    return render(request, 'categories.html', {'category_posts': category_posts})
+    return render(request, 'post_list.html', {'result': category_posts})
+
 
 def show_user_post_view(request, pk):
     result = Post.objects.filter(author_id=pk, is_private=0)
-    return render(request,'user_posts.html',{'result':result})
+    return render(request, 'post_list.html', {'result': result})
