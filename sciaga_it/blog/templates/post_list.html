@@ -14,7 +14,7 @@
                     <h4><a href="{% url 'post-details' post.pk %}">{{ post.title }}</a></h4>
                     {{ post.publication_date }} | kategoria: <a href="{% url 'category' post.category_id %}">
                     {{ post.category }}</a>
-                    | autor: {{ post.author }}
+                    | autor: <a href="{% url 'user_posts' post.author_id %}">{{ post.author }}</a>
                 </section>
 
                 {% if user.is_authenticated %}
