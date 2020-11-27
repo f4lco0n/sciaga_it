@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category
@@ -51,11 +52,13 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('home')
 
 
-def category_view(request, category_id):
-    category_posts = Post.objects.filter(category_id=category_id, is_private=0)
-    return render(request, 'post_list.html', {'result': category_posts})
+def category_view(request, cat):
+    category = Category.objects.get(name=cat.replace('-', ' '))
+    category_posts = Post.objects.filter(category_id=category.id, is_private=0)
+    return render(request, 'post_list.html', {'result': category_posts, 'list_title': f'Ściągi z kategorii: {category.name}'})
 
 
-def show_user_post_view(request, pk):
-    result = Post.objects.filter(author_id=pk, is_private=0)
-    return render(request, 'post_list.html', {'result': result})
+def show_user_post_view(request, username):
+    user = User.objects.get(username=username)
+    result = Post.objects.filter(author_id=user.id, is_private=0)
+    return render(request, 'post_list.html', {'result': result, 'list_title': f'Ściągi użytkownika: {user.username}'})

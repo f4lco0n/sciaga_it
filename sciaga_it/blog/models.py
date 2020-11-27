@@ -5,6 +5,7 @@ from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from datetime import datetime, date
 
+
 # Create your models here.
 
 class Category(models.Model):
@@ -13,8 +14,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class Post(models.Model):
 
+class Post(models.Model):
     title = models.CharField(max_length=255)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default='')
     title_tag = models.CharField(max_length=255)
@@ -30,6 +31,3 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_list')
-
-
-
