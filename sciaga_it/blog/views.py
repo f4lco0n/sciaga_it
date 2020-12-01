@@ -55,10 +55,12 @@ class DeletePostView(DeleteView):
 def category_view(request, cat):
     category = Category.objects.get(name=cat.replace('-', ' '))
     category_posts = Post.objects.filter(category_id=category.id, is_private=0)
-    return render(request, 'post_list.html', {'result': category_posts, 'list_title': f'Ściągi z kategorii: {category.name}'})
+    return render(request, 'post_list.html', {'result': category_posts,
+                                              'list_title': 'Ściągi z kategorii: {0}'.format(category.name)})
 
 
 def show_user_post_view(request, username):
     user = User.objects.get(username=username)
     result = Post.objects.filter(author_id=user.id, is_private=0)
-    return render(request, 'post_list.html', {'result': result, 'list_title': f'Ściągi użytkownika: {user.username}'})
+    return render(request, 'post_list.html', {'result': result,
+                                              'list_title': 'Ściągi użytkownika: {0}'.format(user.username)})
