@@ -64,3 +64,8 @@ def show_user_post_view(request, username):
     result = Post.objects.filter(author_id=user.id, is_private=0)
     return render(request, 'post_list.html', {'result': result,
                                               'list_title': 'Ściągi użytkownika: {0}'.format(user.username)})
+
+def show_user_profile_view(request, username):
+    user = User.objects.get(username=username)
+    user_posts = Post.objects.filter(author=user, is_private=0)
+    return render(request, 'user_profile.html', {'user': user, 'user_posts': user_posts})
