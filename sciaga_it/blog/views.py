@@ -5,7 +5,6 @@ from .models import Post, Category
 from .forms import PostForm, UpdatePostForm
 from django.urls import reverse_lazy
 
-
 # Create your views here.
 
 
@@ -66,6 +65,6 @@ def show_user_post_view(request, username):
                                               'list_title': 'Ściągi użytkownika: {0}'.format(user.username)})
 
 def show_user_profile_view(request, username):
-    user = User.objects.get(username=username)
-    user_posts = Post.objects.filter(author=user, is_private=0)
-    return render(request, 'user_profile.html', {'user': user, 'user_posts': user_posts})
+    user_profile = User.objects.get(username=username)
+    user_posts = Post.objects.filter(author=user_profile, is_private=0)
+    return render(request, 'user_profile.html', {'user_profile': user_profile, 'user_posts': user_posts})

@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Usuń ściągę
+Usuń ściągę
 {% endblock %}
 
 {% block content %}
 
-<h1>Usuń ściągę: {{ post.title }}</h1>
+<h1>
+    <center>Czy jesteś pewien, aby usunąć post: {{ post.title }}?</center>
+</h1>
 
 <div class="form=control">
     <form method="POST">
         {% csrf_token %}
 
-        <button class="btn btn-info">Usuń</button>
-
+        <center>
+            <button class="btn btn-info">Usuń</button>
+        </center>
     </form>
 </div>
 

@@ -2,18 +2,13 @@
 
 {% block content %}
 
-<!--{% for post in result %}-->
-    <!--<a href="{% url 'post-details' post.pk %}">-->
-        <!--{{ post.title }}-->
-    <!--</a>-->
-    <!--<br>-->
-<!--{% endfor %}-->
-Profil użytkownika: {{ user.username }}<br>
-Data dołączenia: {{ user.date_joined }}<br>
-Ostatnio aktywny: {{ user.last_login }}<br>
+Profil użytkownika: {{ user_profile.username }}<br>
+Data dołączenia: {{ user_profile.date_joined }}<br>
+Ostatnio aktywny: {{ user_profile.last_login }}<br>
 <b>Posty publiczne:</b> <br>
 {% for post in user_posts %}
-    {{ post.title }}<br>
+<a href="{% url 'post-details' post.pk %}">{{ post.title }}</a>
+    <br>
 
 
 {% endfor %}
