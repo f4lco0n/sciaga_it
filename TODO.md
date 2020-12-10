@@ -10,3 +10,7 @@
 
 - [ ] Create logic for tutorials
   - [ ] Create comment section for tutorials
+
+### TESTING
+
+- [ ] Create tests
