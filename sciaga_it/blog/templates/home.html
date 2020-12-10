@@ -1,7 +1,16 @@
 {% extends 'base.html' %}
-
 {% block content %}
+{% load static %}
+
 <h1>Witamy!</h1>
-Ilość dostępnych postów: {{ result }}
+
+Ilość dostepnych sciag:
+<div id="value">0</div>
 <p>Wszystkie sciągi można przejrzeć <a href="{%url 'post_list'%}">tutaj</a>.</p>
+
+<script type="text/javascript" language="JavaScript" src="{% static 'js/counter.js' %}"></script>
+<script>
+    animateValue("value", 0, "{{result}}", 500)
+</script>
 {% endblock %}
+

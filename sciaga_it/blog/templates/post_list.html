@@ -5,8 +5,9 @@
 <center><h1 class="post-list-title">{{ list_title }}</h1></center>
 {% else %}
 <center><h1 class="post-list-title">Wszystkie ściągi</h1></center>
+{% if user.is_authenticated %}
 <button class="btn btn-outline-success" onclick="location.href = '/add_post'">Dodaj ściągę</button>
-
+{% endif %}
 {% endif %}
 
 <ul class="post-list">
