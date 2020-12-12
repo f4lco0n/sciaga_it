@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Post, Category
+from .models import Post, Category, Tutorial
 from .forms import PostForm, UpdatePostForm
 from django.urls import reverse_lazy
 
@@ -68,3 +68,14 @@ def show_user_profile_view(request, username):
     user_profile = User.objects.get(username=username)
     user_posts = Post.objects.filter(author=user_profile, is_private=0)
     return render(request, 'user_profile.html', {'user_profile': user_profile, 'user_posts': user_posts})
+
+
+
+class TutorialListView(ListView):
+    model = Tutorial
+    template_name = "tutorial_list.html"
+    ordering = ['-publication_date']
+
+    def get(self, request, *args, **kwargs):
+        result = Tutorial.objects.all()
+        return render(request, self.template_name, {'result': result})

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if list_title %}
+<center><h1 class="#">{{ tutorial_title }}</h1></center>
+{% else %}
+<center><h1 class="#">Wszystkie poradniki</h1></center>
+{% if user.is_authenticated %}
+<button class="btn btn-outline-success" onclick="location.href = '#'">Dodaj tutorial</button>
+{% endif %}
+{% endif %}
+
+<ul class="post-list">
+    {% for tutorial in result %}
+
+    <li>
+        <div class="post-preview-card">
+            <div class="post-details">
+                <section class="post-info-section">
+                    <h4><a href="#">{{ tutorial.tutorial_title }}</a></h4>
+                    {{ tutorial.tutorial_publication_date }} | kategoria:
+                    | autor:
+                </section>
+
+
+            </div>
+
+            <br>
+            <div class="post-content">
+                {{ tutorial.tutorial_short_description }}
+            </div>
+        </div>
+    </li>
+    <br>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock %}
