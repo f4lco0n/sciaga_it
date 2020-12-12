@@ -8,5 +8,8 @@
 
 ### FUNCTIONALITY
 
+- [ ] Create comment section for tutorials
+
+### IN PROGRESS
 - [ ] Create logic for tutorials
-  - [ ] Create comment section for tutorials
+- [ ] Add the same layout for Tutorials like Post
