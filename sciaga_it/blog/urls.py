@@ -1,7 +1,8 @@
 from django.urls import path, include
 from . import views
 from .views import HomeView, PostDetailView, PostCreateView, UpdatePostView, DeletePostView, \
-    category_view, PostListView, show_user_post_view, show_user_profile_view, TutorialListView
+    category_view, PostListView, show_user_post_view, show_user_profile_view, TutorialListView,\
+    TutorialDetailView
 
 urlpatterns = [
     # path('', views.home, name='home'),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('user/<str:username>/posts', show_user_post_view, name='user_posts'),
     path('profile/<str:username>/', show_user_profile_view, name='user_profile'),
     path('tutorial_list/', TutorialListView.as_view(), name='tutorial_list'),
+    path('tutorial_details/<int:pk>', TutorialDetailView.as_view(),name='tutorial-details')
 ]

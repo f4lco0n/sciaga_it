@@ -2,9 +2,9 @@
 
 {% block content %}
 {% if list_title %}
-<center><h1 class="#">{{ tutorial_title }}</h1></center>
+<center><h1 class="post-list-title">{{ tutorial_title }}</h1></center>
 {% else %}
-<center><h1 class="#">Wszystkie poradniki</h1></center>
+<center><h1 class="post-list-title">Wszystkie poradniki</h1></center>
 {% if user.is_authenticated %}
 <button class="btn btn-outline-success" onclick="location.href = '#'">Dodaj tutorial</button>
 {% endif %}
@@ -17,9 +17,11 @@
         <div class="post-preview-card">
             <div class="post-details">
                 <section class="post-info-section">
-                    <h4><a href="#">{{ tutorial.tutorial_title }}</a></h4>
-                    {{ tutorial.tutorial_publication_date }} | kategoria:
-                    | autor:
+                    <h4><a href="{% url 'tutorial-details' tutorial.pk %}">{{ tutorial.tutorial_title }}</a></h4>
+                    {{ tutorial.tutorial_publication_date }} | kategoria: <a href="{% url 'category' tutorial.tutorial_category|slugify %}">
+                    {{ tutorial.tutorial_category }}
+                </a>
+                    | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author }}</a>
                 </section>
 
 

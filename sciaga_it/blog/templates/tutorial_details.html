@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ tutorial.tutorial_title_tag }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ tutorial.tutorial_title }}</h1>
+<small>
+    By: {{ tutorial.tutorial_author }} {{ tutorial.tutorial_publication_date }}
+
+</small>
+<br/>
+{{ tutorial.tutorial_body|safe }}
+
+<br/><br/>
+<a href="{% url 'tutorial_list' %}" class="btn btn-info">Powrót</a>
+
+{% endblock %}

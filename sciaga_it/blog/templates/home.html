@@ -10,7 +10,9 @@ Ilość dostepnych sciag:
 
 <script type="text/javascript" language="JavaScript" src="{% static 'js/counter.js' %}"></script>
 <script>
-    animateValue("value", 0, "{{result}}", 500)
+    animateValue("value", 0, "{{posts}}", 500)
 </script>
+Ilość dostępnych tutoriali: {{ tutorials }}
+<p>Wszystkie tutoriale można przejrzeć <a href="{%url 'tutorial_list'%}">tutaj</a>.</p>
 {% endblock %}
 
