@@ -48,3 +48,7 @@ class Tutorial(models.Model):
         return self.tutorial_title + '|' + str(self.tutorial_author)
 
 
+    def get_absolute_url(self):
+        return reverse('tutorial_list')
+
+

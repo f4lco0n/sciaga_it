@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category, Tutorial
-from .forms import PostForm, UpdatePostForm
+from .forms import PostForm, UpdatePostForm, TutorialForm
 from django.urls import reverse_lazy
 
 
@@ -56,7 +56,8 @@ def category_view(request, cat):
     return render(request, 'post_list.html', {'result': category_posts,
                                               'list_title': 'Ściągi z kategorii: {0}'.format(category.name)})
 
-#TODO: rethink a way to display user's posts
+
+# TODO: rethink a way to display user's posts
 def show_user_post_view(request, username):
     """view which returns all posts from clicked user"""
     user = User.objects.get(username=username)
@@ -64,12 +65,12 @@ def show_user_post_view(request, username):
     return render(request, 'post_list.html', {'result': result,
                                               'list_title': 'Ściągi użytkownika: {0}'.format(user.username)})
 
+
 def show_user_profile_view(request, username):
     """view which returns user's profile with basic info and all public posts"""
     user_profile = User.objects.get(username=username)
     user_posts = Post.objects.filter(author=user_profile, is_private=0)
     return render(request, 'user_profile.html', {'user_profile': user_profile, 'user_posts': user_posts})
-
 
 
 class TutorialListView(ListView):
@@ -85,3 +86,9 @@ class TutorialListView(ListView):
 class TutorialDetailView(DetailView):
     model = Tutorial
     template_name = "tutorial_details.html"
+
+
+class TutorialCreateView(CreateView):
+    model = Tutorial
+    form_class = TutorialForm
+    template_name = "add_tutorial.html"

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Utwórz nowy tutorial
+{% endblock %}
+
+{% block content %}
+
+<h1>Dodaj nowy tutorial</h1>
+
+<div class="form=control">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+
+        <button class="btn btn-info">Dodaj tutorial</button>
+
+    </form>
+</div>
+
+<script>
+    
+    var author_name = "{{ user.id }}";
+    document.getElementById("author_input").value = author_name;
+
+</script>
+
+
+{% endblock %}
