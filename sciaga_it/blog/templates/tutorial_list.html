@@ -24,6 +24,15 @@
                     | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author }}</a>
                 </section>
 
+                {% if user.is_authenticated %}
+                <section class="post-action-menu-section">
+                    <ul class="post-action-menu">
+                        <li><small><a href="{% url 'update-tutorial' tutorial.pk %}">Edytuj</a></small></li>
+                        <li><small><a href="{% url 'delete-tutorial' tutorial.pk %}">Usuń</a></small></li>
+                    </ul>
+
+                </section>
+                {% endif %}
 
             </div>
 

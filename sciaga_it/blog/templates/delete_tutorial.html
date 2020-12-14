@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Usuń poradnik
+{% endblock %}
+
+{% block content %}
+
+<h1>
+    <center>Czy jesteś pewien, aby usunąć poradnik: {{ tutorial.tutorial_title }}?</center>
+</h1>
+
+<div class="form=control">
+    <form method="POST">
+        {% csrf_token %}
+
+        <center>
+            <button class="btn btn-info">Usuń</button>
+        </center>
+    </form>
+</div>
+
+{% endblock %}

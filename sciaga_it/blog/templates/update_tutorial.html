@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edytuj tutorial
+{% endblock %}
+
+{% block content %}
+
+<h1>Edytuj tutorial</h1>
+
+
+<div class="form=control">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.media }}
+
+        <button class="btn btn-info">Zapisz</button>
+
+    </form>
+</div>
+
+{% endblock %}

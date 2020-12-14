@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import Post, Category, Tutorial
-from .forms import PostForm, UpdatePostForm, TutorialForm
+from .forms import PostForm, UpdatePostForm, TutorialForm, UpdateTutorialForm
 from django.urls import reverse_lazy
 
 
@@ -92,3 +92,15 @@ class TutorialCreateView(CreateView):
     model = Tutorial
     form_class = TutorialForm
     template_name = "add_tutorial.html"
+
+
+class TutorialUpdateView(UpdateView):
+    model = Tutorial
+    form_class = UpdateTutorialForm
+    template_name = "update_tutorial.html"
+
+
+class DeleteTutorialView(DeleteView):
+    model = Tutorial
+    template_name = "delete_tutorial.html"
+    success_url = reverse_lazy('home')
