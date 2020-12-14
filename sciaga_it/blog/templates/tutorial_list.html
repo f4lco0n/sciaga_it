@@ -25,6 +25,7 @@
                 </section>
 
                 {% if user.is_authenticated %}
+                {% if user.id == tutorial.tutorial_author.id %}
                 <section class="post-action-menu-section">
                     <ul class="post-action-menu">
                         <li><small><a href="{% url 'update-tutorial' tutorial.pk %}">Edytuj</a></small></li>
@@ -32,6 +33,7 @@
                     </ul>
 
                 </section>
+                {% endif %}
                 {% endif %}
 
             </div>

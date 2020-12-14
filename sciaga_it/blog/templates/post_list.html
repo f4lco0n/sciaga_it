@@ -24,13 +24,20 @@
                 </section>
 
                 {% if user.is_authenticated %}
+                {% if user.id == post.author.id %}
                 <section class="post-action-menu-section">
                     <ul class="post-action-menu">
-                        <li><small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small></li>
-                        <li><small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small></li>
+
+                        <li>
+                            <small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small>
+                        </li>
+                        <li>
+                            <small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small>
+                        </li>
                     </ul>
 
                 </section>
+                {% endif %}
                 {% endif %}
             </div>
 

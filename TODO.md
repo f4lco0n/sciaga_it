@@ -9,7 +9,7 @@
 ### FUNCTIONALITY
 
 - [ ] Create comment section for tutorials
-- [ ] Fix bug which allows users to edit/remove not their posts/tutorials
+- [x] Fix bug which allows users to edit/remove not their posts/tutorials
 
 ### TESTING
 
