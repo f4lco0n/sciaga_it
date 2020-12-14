@@ -16,8 +16,8 @@
 - [ ] Create tests
 
 ### IN PROGRESS
-- [ ] Create logic for tutorials
-- [ ] Add the same layout for Tutorials like Post
+- [x] Create logic for tutorials
+- [x] Add the same layout for Tutorials like Post
 
 
 
