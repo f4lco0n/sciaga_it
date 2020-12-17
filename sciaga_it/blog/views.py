@@ -13,7 +13,8 @@ class HomeView(ListView):
     def get(self, request, *args, **kwargs):
         posts = Post.objects.filter(is_private=0).count()
         tutorials = Tutorial.objects.all().count()
-        return render(request, self.template_name, {'posts': posts, 'tutorials': tutorials})
+        users = User.objects.all().count()
+        return render(request, self.template_name, {'posts': posts, 'tutorials': tutorials, 'users': users})
 
 
 class PostListView(ListView):

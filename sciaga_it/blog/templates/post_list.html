@@ -1,14 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 {% if list_title %}
 <center><h1 class="post-list-title">{{ list_title }}</h1></center>
 {% else %}
 <center><h1 class="post-list-title">Wszystkie ściągi</h1></center>
+{% endif %}
+
 {% if user.is_authenticated %}
-<button class="btn btn-outline-success" onclick="location.href = '/add_post'">Dodaj ściągę</button>
+<button class="add-post-btn bg-dark text-white" onclick="location.href = '/add_post'">Dodaj post</button>
 {% endif %}
-{% endif %}
+
 
 <ul class="post-list">
     {% for post in result %}
