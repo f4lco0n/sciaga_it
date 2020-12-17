@@ -2,9 +2,9 @@
 {% block content %}
 {% load static %}
 
-<h1>Witamy!</h1>
+<center><h1>Witamy!</h1></center>
 <div id="box-container">
-    <div id="sizer-posts">
+    <div class="sizer" id="sizer-posts">
         <div id="square-posts">Ilość dostępnych ściąg
             <div id="value-posts">100</div>
 
@@ -12,9 +12,17 @@
 
     </div>
 
-    <div id="sizer-tutorials">
-        <div id="square-tutorials">Ilość dostępnych tutoriali
+    <div class="sizer" id="sizer-tutorials">
+        <div id="square-tutorials">Ilość dostępnych poradników
             <div id="value-tutorials">100</div>
+
+        </div>
+
+    </div>
+
+    <div class="sizer" id="sizer-users">
+        <div id="square-users">Ilość użytkowników
+            <div id="value-users">100</div>
 
         </div>
 
@@ -29,6 +37,10 @@
 </script>
 <script>
     animateValue("value-tutorials", 0, "{{tutorials}}", 500)
+
+</script>
+<script>
+    animateValue("value-users", 0, "{{users}}", 500)
 
 </script>
 {% endblock %}

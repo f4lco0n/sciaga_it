@@ -1,100 +1,160 @@
 #box-container {
-  margin: 0 auto;
-
+    margin: 0 auto;
+    display: flex;
+    width: 85%;
 }
 
 #sizer-posts {
-  height: 100%;
-  background-color: #34495e;
-  resize: horizontal;
-  overflow: hidden;
-  // width: 100%;
-  width: 200px;
+    margin-left: 0;
+    margin-right: auto;
 
-  position: relative;
-  &::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    text-align: center;
-    content: "Resize me!";
-    color: white;
-    background-color: black;
-    text-shadow: 0 0 2px black;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-    z-index: 2;
-  }
+    height: 100%;
+    background-color: #34495e;
+    resize: horizontal;
+    overflow: hidden;
+/ / width: 100 %;
+    width: 300px;
+
+    position: relative;
+
+/*&*/
+    /*::before {*/
+    /*    position: absolute;*/
+    /*    bottom: 0;*/
+    /*    left: 0;*/
+    /*    right: 0;*/
+    /*    height: 20px;*/
+    /*    text-align: center;*/
+    /*    content: "Resize me!";*/
+    /*    color: white;*/
+    /*    background-color: black;*/
+    /*    text-shadow: 0 0 2px black;*/
+    /*    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));*/
+    /*    z-index: 2;*/
+    /*}*/
+
 }
 
 #value-posts {
-  font-size: 100px;
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
+    font-size: 100px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
 #square-posts {
 
-  /* font-size: calc(3vw + 3vh); */
-  width: 100%;
-  padding-bottom: 100%;
-  position: relative;
-  background-color: #2980b9;
-  text-align: center;
-  font-size: 15px;
-  color: #fff;
+    /* font-size: calc(3vw + 3vh); */
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    background-color: #582335;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
 }
 
 #sizer-tutorials {
-  height: 100%;
-  background-color: #34495e;
-  resize: horizontal;
-  overflow: hidden;
-  // width: 100%;
-  width: 200px;
+    height: 100%;
+    background-color: #34495e;
+    resize: horizontal;
+    overflow: hidden;
+/ / width: 100 %;
+    width: 300px;
 
-  position: relative;
-  &::before {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 20px;
-    text-align: center;
-    content: "Resize me!";
-    color: white;
-    background-color: black;
-    text-shadow: 0 0 2px black;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
-    z-index: 2;
-  }
+    position: relative;
+
+/*&*/
+/*::before {*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    height: 20px;*/
+/*    text-align: center;*/
+/*    content: "Resize me!";*/
+/*    color: white;*/
+/*    background-color: black;*/
+/*    text-shadow: 0 0 2px black;*/
+/*    background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));*/
+/*    z-index: 2;*/
+/*}*/
+
 }
 
 #value-tutorials {
-  font-size: 100px;
-  color: #fff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -moz-transform: translateX(-50%) translateY(-50%);
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
+    font-size: 100px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
 #square-tutorials {
 
-  /* font-size: calc(3vw + 3vh); */
-  width: 100%;
-  padding-bottom: 100%;
-  position: relative;
-  background-color: #2980b9;
-  text-align: center;
-  font-size: 15px;
-  color: #fff;
+    /* font-size: calc(3vw + 3vh); */
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    background-color: #2c6d35;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+
+#sizer-users {
+    margin-left: auto;
+    margin-right: 0;
+    height: 100%;
+    background-color: #34495e;
+    resize: horizontal;
+    overflow: hidden;
+/ / width: 100 %;
+    width: 300px;
+
+    position: relative;
+    /*&::before {*/
+    /*  position: absolute;*/
+    /*  bottom: 0;*/
+    /*  left: 0;*/
+    /*  right: 0;*/
+    /*  height: 20px;*/
+    /*  text-align: center;*/
+    /*  content: "Resize me!";*/
+    /*  color: white;*/
+    /*  background-color: black;*/
+    /*  text-shadow: 0 0 2px black;*/
+    /*  background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));*/
+    /*  z-index: 2;*/
+    /*}*/
+}
+
+#value-users {
+    font-size: 100px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+}
+
+#square-users {
+
+    /* font-size: calc(3vw + 3vh); */
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    background-color: #325d77;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
 }
