@@ -3,7 +3,6 @@
 ### IMPROVE LAYOUT OF THE WEBSITE
 
 - [ ] Fix button which adds new cheat sheet
-- [ ] Change landing page
 - [ ] Change user's edit profile
 
 ### FUNCTIONALITY
@@ -16,6 +15,7 @@
 - [ ] Create tests
 
 ### IN PROGRESS
+- [ ] Change landing page
 - [x] Create logic for tutorials
 - [x] Add the same layout for Tutorials like Post
 

@@ -3,20 +3,33 @@
 {% load static %}
 
 <h1>Witamy!</h1>
+<div id="box-container">
+    <div id="sizer-posts">
+        <div id="square-posts">Ilość dostępnych ściąg
+            <div id="value-posts">100</div>
 
-Ilość dostępnych ściag:
-<div id="value">0</div>
-<p>Wszystkie sciągi można zobaczyć <a href="{%url 'post_list'%}">tutaj</a>.</p>
+        </div>
+
+    </div>
+
+    <div id="sizer-tutorials">
+        <div id="square-tutorials">Ilość dostępnych tutoriali
+            <div id="value-tutorials">100</div>
+
+        </div>
+
+    </div>
+
+</div>
 
 <script type="text/javascript" language="JavaScript" src="{% static 'js/counter.js' %}"></script>
 <script>
-    animateValue("value", 0, "{{posts}}", 500)
+    animateValue("value-posts", 0, "{{posts}}", 500)
+
 </script>
-Ilość dostępnych tutoriali:
-<div id="tutorial-count">0</div>
-<p>Wszystkie tutoriale można zobaczyć <a href="{%url 'tutorial_list'%}">tutaj</a>.</p>
 <script>
-    animateValue("tutorial-count", 0, "{{tutorials}}", 500)
+    animateValue("value-tutorials", 0, "{{tutorials}}", 500)
+
 </script>
 {% endblock %}
 
