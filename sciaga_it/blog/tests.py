@@ -113,3 +113,4 @@ class TestViews(TestCase):
         # assert if category is saved correctly
         self.assertEquals(category_test.id, post2.category_id)
         self.assertEquals(category_test.name, 'programowanie')
+
