@@ -5,6 +5,7 @@
 
 
 ### FUNCTIONALITY
+- [ ] Add pagination
 - [ ] Add search bar
 - [ ] Separate categories for cheat sheets and tutorials
 - [ ] Create comment section for tutorials
