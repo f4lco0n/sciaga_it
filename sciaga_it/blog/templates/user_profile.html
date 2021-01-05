@@ -1,20 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!--<img src="{{ user.profile.profile_picture.url }}" class="img-thumbnail">-->
-{{ user_profile.profile.bio }}
-<!--Profil użytkownika: {{ user_profile.username }}<br>-->
-<!--Data dołączenia: {{ user_profile.date_joined }}<br>-->
-<!--Ostatnio aktywny: {{ user_profile.last_login }}<br>-->
-<!--<b>Posty publiczne:</b> <br>-->
-<!--{% for post in user_posts %}-->
-<!--<a href="{% url 'post-details' post.pk %}">{{ post.title }}</a>-->
-<!--<br>-->
-
-
-<!--{% endfor %}-->
 
 <div class="container">
+
     <div class="main-body">
 
 
@@ -24,13 +13,20 @@
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
                             <!--<img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin"-->
-                                 <!--class="rounded-circle" width="150">-->
-                            <img src="{{ user.profile.profile_picture.url }}" alt="Admin"
+                            <!--class="rounded-circle" width="150">-->
+                            <img src="{{ user_profile.profile.profile_picture.url }}" alt="Admin"
                                  class="rounded-circle" width="150">
                             <div class="mt-3">
                                 <h4>{{ user_profile.username }}</h4>
                                 {% if user_profile.profile.occupation %}
-                                    <p class="text-secondary mb-1">{{ user_profile.profile.occupation }}</p>
+                                <p class="text-secondary mb-1">{{ user_profile.profile.occupation }}</p>
+                                {% endif %}
+                                {% if user.id == user_profile.profile.user.id %}
+                                <h7>
+                                    <a class="dropdown-item" href="{% url 'edit_profile' %}" style="color: #17a2b8  !important;">Edytuj dane osobowe</a>
+                                    <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}" style="color: #17a2b8  !important;">Edytuj
+                                        profil</a>
+                                </h7>
                                 {% endif %}
                             </div>
                         </div>
@@ -69,7 +65,7 @@
                         </li>
                         {% endif %}
 
-
+                        {% if user_profile.profile.twitter_url %}
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -79,8 +75,11 @@
                                 </svg>
                                 Twitter
                             </h6>
-                            <span class="text-secondary">@#</span>
+                            <span class="text-secondary">@{{ user_profile.profile.twitter_url }}</span>
                         </li>
+                        {% endif %}
+
+                        {% if user_profile.profile.instagram_url %}
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -93,8 +92,11 @@
                                 </svg>
                                 Instagram
                             </h6>
-                            <span class="text-secondary">#</span>
+                            <span class="text-secondary">{{ user_profile.profile.instagram_url }}</span>
                         </li>
+                        {% endif %}
+
+                        {% if user_profile.profile.facebook_url %}
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <h6 class="mb-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -105,8 +107,9 @@
                                 </svg>
                                 Facebook
                             </h6>
-                            <span class="text-secondary">#</span>
+                            <span class="text-secondary">{{ user_profile.profile.facebook_url }}</span>
                         </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -134,77 +137,81 @@
                     </div>
                 </div>
 
-                <div class="row gutters-sm">
-                    <div class="col-sm-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project
-                                    Status</h6>
-                                <small>Web Design</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
-                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Website Markup</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
-                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>One Page</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
-                                         aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Mobile Template</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
-                                         aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Backend API</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
-                                         aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 mb-3">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project
-                                    Status</h6>
-                                <small>Web Design</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"
-                                         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Website Markup</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%"
-                                         aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>One Page</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%"
-                                         aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Mobile Template</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%"
-                                         aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                                <small>Backend API</small>
-                                <div class="progress mb-3" style="height: 5px">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%"
-                                         aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
+                <!--<div class="row gutters-sm">-->
+
+                <div class="col-md-8>
+                    <div class=" col-sm-6 mb-3
+                ">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">O mnie</i>
+                        </h6>
+                        {{ user_profile.profile.bio }}
+                        <!--<small>Web Design</small>-->
+                        <!--<div class="progress mb-3" style="height: 5px">-->
+                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"-->
+                        <!--aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>-->
+                        <!--</div>-->
+                        <!--<small>Website Markup</small>-->
+                        <!--<div class="progress mb-3" style="height: 5px">-->
+                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 72%"-->
+                        <!--aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>-->
+                        <!--</div>-->
+                        <!--<small>One Page</small>-->
+                        <!--<div class="progress mb-3" style="height: 5px">-->
+                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 89%"-->
+                        <!--aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>-->
+                        <!--</div>-->
+                        <!--<small>Mobile Template</small>-->
+                        <!--<div class="progress mb-3" style="height: 5px">-->
+                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 55%"-->
+                        <!--aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>-->
+                        <!--</div>-->
+                        <!--<small>Backend API</small>-->
+                        <!--<div class="progress mb-3" style="height: 5px">-->
+                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 66%"-->
+                        <!--aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>
+            <!--<div class="col-sm-6 mb-3">-->
+            <!--<div class="card h-100">-->
+            <!--<div class="card-body">-->
+            <!--<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project-->
+            <!--Status</h6>-->
+            <!--<small>Web Design</small>-->
+            <!--<div class="progress mb-3" style="height: 5px">-->
+            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"-->
+            <!--aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>-->
+            <!--</div>-->
+            <!--<small>Website Markup</small>-->
+            <!--<div class="progress mb-3" style="height: 5px">-->
+            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 72%"-->
+            <!--aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>-->
+            <!--</div>-->
+            <!--<small>One Page</small>-->
+            <!--<div class="progress mb-3" style="height: 5px">-->
+            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 89%"-->
+            <!--aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>-->
+            <!--</div>-->
+            <!--<small>Mobile Template</small>-->
+            <!--<div class="progress mb-3" style="height: 5px">-->
+            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 55%"-->
+            <!--aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>-->
+            <!--</div>-->
+            <!--<small>Backend API</small>-->
+            <!--<div class="progress mb-3" style="height: 5px">-->
+            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 66%"-->
+            <!--aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
         </div>
     </div>
+</div>
+</div>
 </div>
 
 {% endblock %}

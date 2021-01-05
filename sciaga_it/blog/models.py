@@ -19,7 +19,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
     bio = models.TextField()
     occupation = models.CharField(max_length=100, null=True, blank=True)
-    profile_picture = models.ImageField(null=True, blank=True, upload_to='images/profile/')
+    profile_picture = models.ImageField(null=True, blank=True, upload_to='images/profile/',
+                                        default='images/profile/user_avatar.png')
     website_url = models.CharField(max_length=255, null=True, blank=True)
     facebook_url = models.CharField(max_length=255, null=True, blank=True)
     instagram_url = models.CharField(max_length=255, null=True, blank=True)
@@ -28,6 +29,7 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
 
 
 class Post(models.Model):

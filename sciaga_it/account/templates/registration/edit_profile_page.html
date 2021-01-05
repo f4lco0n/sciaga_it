@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edycja strony profilu
+{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+{% if user.id == profile.user.id %}
+
+<h1>Edytuj strone profilu</h1>
+
+<div class="form-group">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button class="btn btn-info">Edytuj</button>
+
+    </form>
+</div>
+{% else %}
+Dostęp zabroniony
+{% endif %}
+
+{% else %}
+Dostęp zabroniony
+{% endif %}
+
+{% endblock %}
