@@ -91,8 +91,6 @@ class TutorialListView(ListView):
         return render(request, self.template_name, {'page_obj': page_obj})
 
 
-
-
 class TutorialDetailView(DetailView):
     model = Tutorial
     template_name = "tutorial_details.html"
@@ -114,3 +112,19 @@ class DeleteTutorialView(DeleteView):
     model = Tutorial
     template_name = "delete_tutorial.html"
     success_url = reverse_lazy('home')
+
+
+class SearchResultsView(ListView):
+    model = Post
+    template_name = 'search_result.html'
+
+    def get(self, request, *args, **kwargs): # new
+        query = self.request.GET.get('q')
+        posts_list = list(Post.objects.filter(title__contains=query))
+        tutorials_list = list(Tutorial.objects.filter(tutorial_title__contains=query))
+        # print(posts_list, tutorials_list)
+        # paginator = Paginator(result, 3)
+        #
+        # page_number = request.GET.get('page')
+        # page_obj = paginator.get_page(page_number)
+        return render(request, self.template_name, {'page_obj_posts': posts_list, 'page_obj_tutorials': tutorials_list})

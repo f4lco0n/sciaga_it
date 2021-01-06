@@ -2,6 +2,8 @@
 {% load static %}
 <html lang="en">
 <head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +29,7 @@
     </title>
     <style>
 
-</style>
+    </style>
 </head>
 <body>
 
@@ -50,8 +52,12 @@
             </li>
 
         </ul>
-    </div>
 
+    </div>
+    <form class="navbar-form" action="{% url 'search_results' %}" method="get">
+        <input type="text" class="form-control"name="q" type="text" placeholder="Search...">
+    </form>
+    </form>
     <ul class="navbar-nav justify-content-end">
         <li class="nav-item">
             <a class="nav-link">
