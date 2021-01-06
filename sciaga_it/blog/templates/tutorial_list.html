@@ -11,25 +11,31 @@
 {% endif %}
 
 <ul class="post-list">
-    {% for tutorial in result %}
+    {% for tutorial in page_obj %}
 
     <li>
         <div class="post-preview-card">
             <div class="post-details">
                 <section class="post-info-section">
                     <h4><a href="{% url 'tutorial-details' tutorial.pk %}">{{ tutorial.tutorial_title }}</a></h4>
-                    {{ tutorial.tutorial_publication_date }} | kategoria: <a href="{% url 'category' tutorial.tutorial_category|slugify %}">
+                    {{ tutorial.tutorial_publication_date }} | kategoria: <a
+                        href="{% url 'category' tutorial.tutorial_category|slugify %}">
                     {{ tutorial.tutorial_category }}
                 </a>
-                    | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author }}</a>
+                    | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author
+                    }}</a>
                 </section>
 
                 {% if user.is_authenticated %}
                 {% if user.id == tutorial.tutorial_author.id %}
                 <section class="post-action-menu-section">
                     <ul class="post-action-menu">
-                        <li><small><a href="{% url 'update-tutorial' tutorial.pk %}">Edytuj</a></small></li>
-                        <li><small><a href="{% url 'delete-tutorial' tutorial.pk %}">Usuń</a></small></li>
+                        <li>
+                            <small><a href="{% url 'update-tutorial' tutorial.pk %}">Edytuj</a></small>
+                        </li>
+                        <li>
+                            <small><a href="{% url 'delete-tutorial' tutorial.pk %}">Usuń</a></small>
+                        </li>
                     </ul>
 
                 </section>
@@ -49,5 +55,21 @@
     {% endfor %}
 
 </ul>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Pierwsza</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Poprzednia</a>
+        {% endif %}
 
+        <span class="current">
+            Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Następna</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Ostatnia &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 {% endblock %}

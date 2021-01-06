@@ -4,10 +4,10 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post, Category, Tutorial
 from .forms import PostForm, UpdatePostForm, TutorialForm, UpdateTutorialForm
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator
 
 
 class HomeView(ListView):
-    # model = Post
     template_name = "home.html"
 
     def get(self, request, *args, **kwargs):
@@ -24,7 +24,11 @@ class PostListView(ListView):
 
     def get(self, request, *args, **kwargs):
         result = Post.objects.filter(is_private=0)
-        return render(request, self.template_name, {'result': result})
+        paginator = Paginator(result, 3)
+
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, self.template_name, {'page_obj': page_obj})
 
 
 class PostDetailView(DetailView):
@@ -81,7 +85,12 @@ class TutorialListView(ListView):
 
     def get(self, request, *args, **kwargs):
         result = Tutorial.objects.all()
-        return render(request, self.template_name, {'result': result})
+        paginator = Paginator(result, 3)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, self.template_name, {'page_obj': page_obj})
+
+
 
 
 class TutorialDetailView(DetailView):
