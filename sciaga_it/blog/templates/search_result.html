@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<script>
+    $(document).ready(function () {
+        $('.group').hide();
+        $('#option1').show();
+        $('#selectMe').change(function () {
+            $('.group').hide();
+            $('#' + $(this).val()).show();
+        })
+    });
+</script>
+
+<center><select id="selectMe" class="custom-select" style="width: 12%">
+    <option value="option1" selected>Wszystko</option>
+    <option value="option2">Poradniki</option>
+    <option value="option3">Posty</option>
+</select></center>
+
+<div id="option1" class="group">
+    <ul class="post-list">
+        {% for post in page_obj_posts %}
+
+        <li>
+            <div class="post-preview-card">
+                <div class="post-details">
+                    <section class="post-info-section">
+                        <h4><a href="{% url 'post-details' post.pk %}">{{ post.title }}</a></h4>
+                        {{ post.publication_date }} | kategoria: <a href="{% url 'category' post.category|slugify %}">
+                        {{ post.category }}</a>
+                        | autor: <a href="{% url 'user_profile' post.author %}">{{ post.author }}</a>
+                    </section>
+
+                    {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                    <section class="post-action-menu-section">
+                        <ul class="post-action-menu">
+
+                            <li>
+                                <small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small>
+                            </li>
+                            <li>
+                                <small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small>
+                            </li>
+                        </ul>
+
+                    </section>
+                    {% endif %}
+                    {% endif %}
+                </div>
+
+                <br>
+                <div class="post-content">
+                    {{ post.short_description }}</p>
+                </div>
+            </div>
+        </li>
+        <br>
+
+        {% endfor %}
+
+        {% for tutorial in page_obj_tutorials %}
+
+        <li>
+            <div class="post-preview-card">
+                <div class="post-details">
+                    <section class="post-info-section">
+                        <h4><a href="{% url 'tutorial-details' tutorial.pk %}">{{ tutorial.tutorial_title }}</a></h4>
+                        {{ tutorial.tutorial_publication_date }} | kategoria: <a
+                            href="{% url 'category' tutorial.tutorial_category|slugify %}">
+                        {{ tutorial.tutorial_category }}
+                    </a>
+                        | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author
+                        }}</a>
+                    </section>
+
+                    {% if user.is_authenticated %}
+                    {% if user.id == tutorial.tutorial_author.id %}
+                    <section class="post-action-menu-section">
+                        <ul class="post-action-menu">
+                            <li>
+                                <small><a href="{% url 'update-tutorial' tutorial.pk %}">Edytuj</a></small>
+                            </li>
+                            <li>
+                                <small><a href="{% url 'delete-tutorial' tutorial.pk %}">Usuń</a></small>
+                            </li>
+                        </ul>
+
+                    </section>
+                    {% endif %}
+                    {% endif %}
+
+                </div>
+
+                <br>
+                <div class="post-content">
+                    {{ tutorial.tutorial_short_description }}
+                </div>
+            </div>
+        </li>
+        <br>
+
+        {% endfor %}
+
+
+    </ul>
+</div>
+<div id="option2" class="group">
+    <ul class="post-list">
+        {% for tutorial in page_obj_tutorials %}
+
+        <li>
+            <div class="post-preview-card">
+                <div class="post-details">
+                    <section class="post-info-section">
+                        <h4><a href="{% url 'tutorial-details' tutorial.pk %}">{{ tutorial.tutorial_title }}</a></h4>
+                        {{ tutorial.tutorial_publication_date }} | kategoria: <a
+                            href="{% url 'category' tutorial.tutorial_category|slugify %}">
+                        {{ tutorial.tutorial_category }}
+                    </a>
+                        | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author
+                        }}</a>
+                    </section>
+
+                    {% if user.is_authenticated %}
+                    {% if user.id == tutorial.tutorial_author.id %}
+                    <section class="post-action-menu-section">
+                        <ul class="post-action-menu">
+                            <li>
+                                <small><a href="{% url 'update-tutorial' tutorial.pk %}">Edytuj</a></small>
+                            </li>
+                            <li>
+                                <small><a href="{% url 'delete-tutorial' tutorial.pk %}">Usuń</a></small>
+                            </li>
+                        </ul>
+
+                    </section>
+                    {% endif %}
+                    {% endif %}
+
+                </div>
+
+                <br>
+                <div class="post-content">
+                    {{ tutorial.tutorial_short_description }}
+                </div>
+            </div>
+        </li>
+        <br>
+
+        {% endfor %}
+    </ul>
+</div>
+<div id="option3" class="group">
+    <ul class="post-list">
+        {% for post in page_obj_posts %}
+
+        <li>
+            <div class="post-preview-card">
+                <div class="post-details">
+                    <section class="post-info-section">
+                        <h4><a href="{% url 'post-details' post.pk %}">{{ post.title }}</a></h4>
+                        {{ post.publication_date }} | kategoria: <a href="{% url 'category' post.category|slugify %}">
+                        {{ post.category }}</a>
+                        | autor: <a href="{% url 'user_profile' post.author %}">{{ post.author }}</a>
+                    </section>
+
+                    {% if user.is_authenticated %}
+                    {% if user.id == post.author.id %}
+                    <section class="post-action-menu-section">
+                        <ul class="post-action-menu">
+
+                            <li>
+                                <small><a href="{% url 'update-post' post.pk %}">Edytuj</a></small>
+                            </li>
+                            <li>
+                                <small><a href="{% url 'delete-post' post.pk %}">Usuń</a></small>
+                            </li>
+                        </ul>
+
+                    </section>
+                    {% endif %}
+                    {% endif %}
+                </div>
+
+                <br>
+                <div class="post-content">
+                    {{ post.short_description }}</p>
+                </div>
+            </div>
+        </li>
+        <br>
+
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

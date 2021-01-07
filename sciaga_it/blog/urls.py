@@ -2,7 +2,7 @@ from django.urls import path, include
 from . import views
 from .views import HomeView, PostDetailView, PostCreateView, UpdatePostView, DeletePostView, \
     category_view, PostListView, show_user_post_view, show_user_profile_view, TutorialListView, \
-    TutorialDetailView, TutorialCreateView, TutorialUpdateView, DeleteTutorialView
+    TutorialDetailView, TutorialCreateView, TutorialUpdateView, DeleteTutorialView, SearchResultsView
 
 urlpatterns = [
     # path('', views.home, name='home'),
@@ -22,4 +22,7 @@ urlpatterns = [
     path('add_tutorial/', TutorialCreateView.as_view(), name='add_tutorial'),
     path('tutorial_details/edit/<int:pk>', TutorialUpdateView.as_view(), name='update-tutorial'),
     path('tutorial_details/<int:pk>/delete', DeleteTutorialView.as_view(), name='delete-tutorial'),
+
+    # SEARCH
+    path('search/', SearchResultsView.as_view(), name='search_results')
 ]
