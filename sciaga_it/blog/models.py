@@ -59,6 +59,7 @@ class Tutorial(models.Model):
     tutorial_short_description = models.CharField(max_length=255,
                                                   default='Kliknij link powyżej aby zobaczyć tutorial')
     tutorial_body = RichTextUploadingField(blank=True, config_name='special')
+    tutorial_is_private = models.BooleanField(default=False)
     tutorial_publication_date = models.DateField(auto_now_add=True)
 
     def __str__(self):

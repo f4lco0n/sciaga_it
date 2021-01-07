@@ -1,7 +1,7 @@
 from django.urls import path, include
 from . import views
 from .views import HomeView, PostDetailView, PostCreateView, UpdatePostView, DeletePostView, \
-    category_view, PostListView, show_user_post_view, show_user_profile_view, TutorialListView, \
+    category_view, PostListView, show_user_profile_view, TutorialListView, \
     TutorialDetailView, TutorialCreateView, TutorialUpdateView, DeleteTutorialView, SearchResultsView
 
 urlpatterns = [
@@ -13,7 +13,6 @@ urlpatterns = [
     path('post_details/edit/<int:pk>', UpdatePostView.as_view(), name='update-post'),
     path('post_details/<int:pk>/delete', DeletePostView.as_view(), name='delete-post'),
     path('category/<str:cat>/', category_view, name='category'),
-    path('user/<str:username>/posts', show_user_post_view, name='user_posts'),
     path('profile/<str:username>/', show_user_profile_view, name='user_profile'),
 
     # TUTORIALS

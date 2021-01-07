@@ -23,8 +23,10 @@
                                 {% endif %}
                                 {% if user.id == user_profile.profile.user.id %}
                                 <h7>
-                                    <a class="dropdown-item" href="{% url 'edit_profile' %}" style="color: #17a2b8  !important;">Edytuj dane osobowe</a>
-                                    <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}" style="color: #17a2b8  !important;">Edytuj
+                                    <a class="dropdown-item" href="{% url 'edit_profile' %}"
+                                       style="color: #17a2b8  !important;">Edytuj dane osobowe</a>
+                                    <a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}"
+                                       style="color: #17a2b8  !important;">Edytuj
                                         profil</a>
                                 </h7>
                                 {% endif %}
@@ -147,69 +149,84 @@
                         <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">O mnie</i>
                         </h6>
                         {{ user_profile.profile.bio }}
-                        <!--<small>Web Design</small>-->
-                        <!--<div class="progress mb-3" style="height: 5px">-->
-                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"-->
-                        <!--aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>-->
-                        <!--</div>-->
-                        <!--<small>Website Markup</small>-->
-                        <!--<div class="progress mb-3" style="height: 5px">-->
-                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 72%"-->
-                        <!--aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>-->
-                        <!--</div>-->
-                        <!--<small>One Page</small>-->
-                        <!--<div class="progress mb-3" style="height: 5px">-->
-                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 89%"-->
-                        <!--aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>-->
-                        <!--</div>-->
-                        <!--<small>Mobile Template</small>-->
-                        <!--<div class="progress mb-3" style="height: 5px">-->
-                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 55%"-->
-                        <!--aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>-->
-                        <!--</div>-->
-                        <!--<small>Backend API</small>-->
-                        <!--<div class="progress mb-3" style="height: 5px">-->
-                        <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 66%"-->
-                        <!--aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>-->
-                        <!--</div>-->
+
                     </div>
+
                 </div>
+                <!--displaying public posts in user's profile-->
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Ściagi
+                            użytkownika</i>
+                        </h6>
+                        {% for post in user_posts %}
+                        <a href="{% url 'post-details' post.pk %}">
+                            {{ post.title }}
+                        </a><br>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+                <!--dispalying public tutorials in user's profile-->
+
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Tutoriale
+                            użytkownika</i>
+                        </h6>
+                        {% for tutorial in user_tutorials %}
+                        <a href="{% url 'tutorial-details' tutorial.pk %}">
+                            {{ tutorial.tutorial_title }}
+                        </a><br>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+
+                <!--displaying private posts in user's profile-->
+                {% if user.id == user_profile.profile.user.id %}
+                {% if private_posts %}
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3">
+                            <i class="material-icons text-info mr-2">Moje prywatne ściągi</i>
+                        </h6>
+                        {% for private_post in private_posts %}
+                        <a href="{% url 'post-details' private_post.pk %}">
+                            {{ private_post.title }}
+                        </a><br>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+                {% endif %}
+                <!--displaying private tutorials in user's profile-->
+                {% if private_tutorials %}
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h6 class="d-flex align-items-center mb-3">
+                            <i class="material-icons text-info mr-2">Moje prywatne poradniki</i>
+                        </h6>
+                        {% for private_tutorial in private_tutorials %}
+                        <a href="{% url 'tutorial-details' private_tutorial.pk %}">
+                            {{ private_tutorial.tutorial_title }}
+                        </a><br>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+                {% endif %}
+
+                {% endif %}
             </div>
-            <!--<div class="col-sm-6 mb-3">-->
-            <!--<div class="card h-100">-->
-            <!--<div class="card-body">-->
-            <!--<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project-->
-            <!--Status</h6>-->
-            <!--<small>Web Design</small>-->
-            <!--<div class="progress mb-3" style="height: 5px">-->
-            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 80%"-->
-            <!--aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>-->
-            <!--</div>-->
-            <!--<small>Website Markup</small>-->
-            <!--<div class="progress mb-3" style="height: 5px">-->
-            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 72%"-->
-            <!--aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>-->
-            <!--</div>-->
-            <!--<small>One Page</small>-->
-            <!--<div class="progress mb-3" style="height: 5px">-->
-            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 89%"-->
-            <!--aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>-->
-            <!--</div>-->
-            <!--<small>Mobile Template</small>-->
-            <!--<div class="progress mb-3" style="height: 5px">-->
-            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 55%"-->
-            <!--aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>-->
-            <!--</div>-->
-            <!--<small>Backend API</small>-->
-            <!--<div class="progress mb-3" style="height: 5px">-->
-            <!--<div class="progress-bar bg-primary" role="progressbar" style="width: 66%"-->
-            <!--aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
-            <!--</div>-->
         </div>
+
     </div>
+</div>
 </div>
 </div>
 </div>

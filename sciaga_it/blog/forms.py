@@ -62,13 +62,15 @@ class UpdatePostForm(forms.ModelForm):
 class TutorialForm(forms.ModelForm):
     class Meta:
         model = Tutorial
+        bool_choices = ((True, 'Tak'), (False, 'Nie'))
         fields = ('tutorial_title', 'tutorial_title_tag', 'tutorial_category',
-                  'tutorial_author', 'tutorial_short_description', 'tutorial_body')
+                  'tutorial_is_private', 'tutorial_author', 'tutorial_short_description', 'tutorial_body')
 
         widgets = {
             'tutorial_title': forms.TextInput(attrs={'class': 'form-control'}),
             'tutorial_title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'tutorial_category': forms.Select(attrs={'class': 'form-control'}),
+            'tutorial_is_private': forms.Select(choices=bool_choices, attrs={'class': 'form-control'}),
             'tutorial_author': forms.TextInput(attrs={'class': 'form-control', 'value': '',
                                                       'id': 'author_input', 'type': 'hidden'}),
             'tutorial_short_description': forms.Textarea(attrs={'class': 'form-control'}),
@@ -80,6 +82,7 @@ class TutorialForm(forms.ModelForm):
             "tutorial_title": "Tytuł poradnika",
             "tutorial_title_tag": "Tag poradnika",
             "tutorial_category": "Kategoria",
+            "tutorial_is_private": "Tutorial prywatny",
             "tutorial_author": "Autor",
             "tutorial_short_description": "Opis krótki",
             "tutorial_body": "Zawartość"
@@ -89,13 +92,15 @@ class TutorialForm(forms.ModelForm):
 class UpdateTutorialForm(forms.ModelForm):
     class Meta:
         model = Tutorial
+        bool_choices = ((True, 'Tak'), (False, 'Nie'))
         fields = ('tutorial_title', 'tutorial_title_tag', 'tutorial_category',
-                  'tutorial_short_description', 'tutorial_body')
+                  'tutorial_is_private', 'tutorial_short_description', 'tutorial_body')
 
         widgets = {
             'tutorial_title': forms.TextInput(attrs={'class': 'form-control'}),
             'tutorial_title_tag': forms.TextInput(attrs={'class': 'form-control'}),
             'tutorial_category': forms.Select(attrs={'class': 'form-control'}),
+            'tutorial_is_private': forms.Select(choices=bool_choices, attrs={'class': 'form-control'}),
             'tutorial_short_description': forms.Textarea(attrs={'class': 'form-control'}),
             'tutorial_body': forms.Textarea(attrs={'class': 'form-control'}),
 
@@ -105,6 +110,7 @@ class UpdateTutorialForm(forms.ModelForm):
             "tutorial_title": "Tytuł poradnika",
             "tutorial_title_tag": "Tag poradnika",
             "tutorial_category": "Kategoria",
+            "tutorial_is_private": "Tutorial prywatny",
             "tutorial_short_description": "Opis krótki",
             "tutorial_body": "Zawartość"
         }

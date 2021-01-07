@@ -72,8 +72,8 @@
                             href="{% url 'category' tutorial.tutorial_category|slugify %}">
                         {{ tutorial.tutorial_category }}
                     </a>
-                        | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author
-                        }}</a>
+                        | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">
+                        {{ tutorial.tutorial_author }}</a>
                     </section>
 
                     {% if user.is_authenticated %}
