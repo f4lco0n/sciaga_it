@@ -58,7 +58,7 @@ def category_view(request, cat):
     """view which returns all posts from clicked category and are not private"""
     category = Category.objects.get(name=cat.replace('-', ' '))
     category_posts = Post.objects.filter(category_id=category.id, is_private=0)
-    return render(request, 'post_list.html', {'result': category_posts,
+    return render(request, 'categories.html', {'category_posts': category_posts,
                                               'list_title': 'Ściągi z kategorii: {0}'.format(category.name)})
 
 

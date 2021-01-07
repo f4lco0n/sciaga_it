@@ -8,8 +8,6 @@
 - [ ] Create mechanism for displaying cheat sheets and tutorials
     depends on category
 - [ ] Create mechanism which allows users add favorites tutorials
-- [ ] Add search bar
-- [ ] Separate categories for cheat sheets and tutorials
 - [ ] Create comment section for tutorials
 
 ### TESTING
@@ -17,10 +15,11 @@
 - [ ] Create tests
 
 ### IN PROGRESS
-- [ ] Add pagination
 
 
 ### DONE
+- [x] Add pagination
+- [x] Add search bar
 - [x] Change user's edit profile
 - [x] Create logic for tutorials
 - [x] Add the same layout for Tutorials like Post
