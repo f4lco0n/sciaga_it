@@ -5,9 +5,9 @@
 
 
 
-{% for c in category_posts %}
+{% for category in category_posts %}
 
-<a href="{% url 'post-details' c.pk %}">{{ c.title }}</a><br>
+<a href="{% url 'post-details' category.pk %}">{{ category.title }}</a><br>
 
 {% endfor %}
 
