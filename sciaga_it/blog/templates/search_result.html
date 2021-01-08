@@ -13,11 +13,22 @@
     });
 </script>
 
-<center><select id="selectMe" class="custom-select" style="width: 12%">
-    <option value="option1" selected>Wszystko</option>
-    <option value="option2">Poradniki</option>
-    <option value="option3">Posty</option>
-</select></center>
+<center>
+    {% if page_obj_posts|length or page_obj_tutorials|length %}
+    <h1 class="search_list_title">{{ list_title }} <strong><span>{{ query }}</span></strong></h1>
+
+
+    <select id="selectMe" class="custom-select" style="width: 12%">
+        <option value="option1" selected>Wszystko</option>
+        <option value="option2">Poradniki</option>
+        <option value="option3">Posty</option>
+    </select>
+    {% else %}
+
+    <h1 class="search_list_title">{{ list_title }} <strong><span>{{ query }}</span></strong></h1>
+    {% endif %}
+
+</center>
 
 <div id="option1" class="group">
     <ul class="post-list">
@@ -120,8 +131,8 @@
                             href="{% url 'category' tutorial.tutorial_category|slugify %}">
                         {{ tutorial.tutorial_category }}
                     </a>
-                        | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">{{ tutorial.tutorial_author
-                        }}</a>
+                        | autor: <a href="{% url 'user_profile' tutorial.tutorial_author %}">
+                        {{ tutorial.tutorial_author }}</a>
                     </section>
 
                     {% if user.is_authenticated %}
