@@ -58,9 +58,11 @@ def category_view(request, cat):
     """view which returns all posts from clicked category and are not private"""
     category = Category.objects.get(name=cat.replace('-', ' '))
     category_posts = Post.objects.filter(category_id=category.id, is_private=0)
-    return render(request, 'categories.html', {'category_posts': category_posts,
-                                              'list_title': 'Ściągi z kategorii: {0}'.format(category.name)})
-
+    category_tutorials = Tutorial.objects.filter(tutorial_category_id=category.id, tutorial_is_private=0)
+    return render(request, 'search_result.html', {'page_obj_posts': category_posts,
+                                                  'page_obj_tutorials': category_tutorials,
+                                                  'list_title': 'Publikacje z kategorii: ',
+                                                  'query': category})
 
 
 def show_user_profile_view(request, username):
@@ -119,6 +121,7 @@ class SearchResultsView(ListView):
 
     def get(self, request, *args, **kwargs):
         query = self.request.GET.get('q')
+
         posts_list = list(Post.objects.filter(
             title__contains=query,
             is_private=0))
@@ -127,4 +130,17 @@ class SearchResultsView(ListView):
             tutorial_title__contains=query,
             tutorial_is_private=0))
 
-        return render(request, self.template_name, {'page_obj_posts': posts_list, 'page_obj_tutorials': tutorials_list})
+        if not query:
+            title = "Przepraszamy, coś poszło nie tak.. :("
+            posts_list.clear()
+            tutorials_list.clear()
+        elif len(posts_list) < 1 and len(tutorials_list) < 1:
+            title = "Nie znaleziono wyników dla frazy "
+        else:
+            print(len(query))
+            title = "Wynik wyszukiwania: "
+
+        return render(request, self.template_name, {'page_obj_posts': posts_list,
+                                                    'page_obj_tutorials': tutorials_list,
+                                                    'list_title': title,
+                                                    'query': query})
