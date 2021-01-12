@@ -1,0 +1,1 @@
+web: gunicorn sciaga_it.wsgi --log-file -
