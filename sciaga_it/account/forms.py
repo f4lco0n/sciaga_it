@@ -5,16 +5,11 @@ from django import forms
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    first_name = forms.CharField(max_length=100,
-                                 widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(max_length=100,
-                                widget=forms.TextInput(attrs={'class': 'form-control'}))
+
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name',
-                  'email', 'password1', 'password2')
+        fields = ('username','password1', 'password2')
 
     def __init__(self, *args, **kwargs):
         super(SignUpForm, self).__init__(*args, **kwargs)
@@ -78,5 +73,7 @@ class PasswordChangingForm(PasswordChangeForm):
         fields = ('old_password', 'new_password1', 'new_password2')
 
         labels = {
-            "old_password": "Stare hasło"
+            "old_password": "Stare hasło",
+            "new_password1": "Nowe hasło",
+            "new_password2": "Powtórz nowe hasło"
         }

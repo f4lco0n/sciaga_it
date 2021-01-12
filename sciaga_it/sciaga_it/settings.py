@@ -28,7 +28,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -140,7 +140,9 @@ CKEDITOR_CONFIGS = {
          ],
          },
     'special':
-        {'toolbar': 'Special', 'height': 500,
+        {'toolbar': 'Special',
+         'height': 500,
+         'width': 1100,
          'toolbar_Special':
              [
                  ["Format", "Bold", "Italic", "Underline", "Strike", "SpellChecker"],

@@ -11,11 +11,16 @@
             $('#' + $(this).val()).show();
         })
     });
+
+
 </script>
 
 <center>
     {% if page_obj_posts|length or page_obj_tutorials|length %}
-    <h1 class="search_list_title">{{ list_title }} <strong><span>{{ query }}</span></strong></h1>
+    <div class="alert alert-success" role="alert">
+        <h1 class="search_list_title">{{ list_title }} <strong><span>{{ query }}</span></strong></h1>
+
+    </div>
 
 
     <select id="selectMe" class="custom-select" style="width: 12%">
@@ -24,8 +29,10 @@
         <option value="option3">Posty</option>
     </select>
     {% else %}
+    <div class="alert alert-danger" role="alert">
+        <h1 class="search_list_title">{{ list_title }} <strong><span>{{ query }}</span></strong></h1>
+    </div>
 
-    <h1 class="search_list_title">{{ list_title }} <strong><span>{{ query }}</span></strong></h1>
     {% endif %}
 
 </center>

@@ -1,11 +1,10 @@
 from django.test import SimpleTestCase
-from django.test import TestCase, Client
-from .models import Category, Post, User
-import json
+from django.test import TestCase
 from django.urls import resolve, reverse
+from .models import Category, Post, User
 from .views import HomeView, PostDetailView, PostListView, \
     PostCreateView, UpdatePostView, DeletePostView, category_view, \
-    show_user_post_view, show_user_profile_view, TutorialListView, \
+    show_user_profile_view, TutorialListView, \
     TutorialDetailView, TutorialCreateView, TutorialUpdateView, \
     DeleteTutorialView
 
@@ -40,10 +39,6 @@ class TestUrls(SimpleTestCase):
     def test_category_view_resolves(self):
         url = reverse('category', args=['programowanie'])
         self.assertEquals(resolve(url).func, category_view)
-
-    def test_user_post_view_resolves(self):
-        url = reverse('user_posts', args=['f4lco0n'])
-        self.assertEquals(resolve(url).func, show_user_post_view)
 
     def test_user_profile_view_resolves(self):
         url = reverse('user_profile', args=['f4lco0n'])
@@ -113,4 +108,3 @@ class TestViews(TestCase):
         # assert if category is saved correctly
         self.assertEquals(category_test.id, post2.category_id)
         self.assertEquals(category_test.name, 'programowanie')
-

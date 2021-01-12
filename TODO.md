@@ -5,19 +5,23 @@
 
 
 ### FUNCTIONALITY
-- [ ] Create mechanism for displaying cheat sheets and tutorials
-    depends on category
+- [ ] Create mechanism which allows users like or dislike
+ posts and tutorials
 - [ ] Create mechanism which allows users add favorites tutorials
+ and posts
 - [ ] Create comment section for tutorials
+- [ ] Improve 'ChangePasswordView' machanic
 
 ### TESTING
 
-- [ ] Create tests
+- [ ] Create more tests
 
 ### IN PROGRESS
 
 
 ### DONE
+- [x] Create mechanism for displaying cheat sheets and tutorials
+    depends on category
 - [x] Add pagination
 - [x] Add search bar
 - [x] Change user's edit profile

@@ -7,7 +7,7 @@
 <div id="box-container">
     <div id="sizer-posts">
         <div id="square-posts">Ilość dostępnych ściąg
-            <div id="value-posts">100</div>
+            <div id="value-posts">0</div>
 
         </div>
 
@@ -15,7 +15,7 @@
 
     <div id="sizer-tutorials">
         <div id="square-tutorials">Ilość dostępnych poradników
-            <div id="value-tutorials">100</div>
+            <div id="value-tutorials">0</div>
 
         </div>
 
@@ -23,7 +23,7 @@
 
     <div id="sizer-users">
         <div id="square-users">Ilość użytkowników
-            <div id="value-users">100</div>
+            <div id="value-users">0</div>
 
         </div>
 
@@ -35,14 +35,31 @@
 <script>
     animateValue("value-posts", 0, "{{posts}}", 500)
 
+
+
 </script>
 <script>
     animateValue("value-tutorials", 0, "{{tutorials}}", 500)
+
+
 
 </script>
 <script>
     animateValue("value-users", 0, "{{users}}", 500)
 
+
+
 </script>
+<br>
+<center>
+    <p>Strona sciaga.it powstała w celu dostarczenia możliwości tworzenia ściąg oraz poradników
+    - zarówno prywatnych jak i publicznych.</p>
+    <p>Głównym celem stworzenia strony była nauka oraz zdobywanie doświadczenia w konkretnej technologii - zbudowana jest z wykorzystaniem frameworka Django.</p>
+    <p>Zawiera ona ciągle pewne niedoskonałości, które w najbliższym czasie zostaną zmienione, a
+    nowe funkcjonalności dodane (komentarze, wiadomości, dodawanie do ulubionych).</p>
+    <p>Twórcy strony - <a href="https://github.com/f4lco0n">f4lco0n</a> oraz
+    <a href="https://github.com/sz0n">sz0n</a> zachęcają do przetestowania tej witryny.</p>
+    <p>Zalecamy również, aby nie podawać prawdziwych adresów e-mail.</p>
+</center>
 {% endblock %}
 
