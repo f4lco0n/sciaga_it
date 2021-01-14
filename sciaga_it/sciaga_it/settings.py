@@ -127,7 +127,7 @@ STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../static'))
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'blog/static')
+    os.path.join(BASE_DIR,'sciaga_it/blog/static')
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
