@@ -1,1 +1,1 @@
-web: gunicorn sciaga_it.wsgi:application --log-file -
+web: gunicorn sciaga_it.sciaga_it.wsgi:application --log-file -
